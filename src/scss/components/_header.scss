@@ -22,15 +22,24 @@
 
         .header-menu-item{
             margin-left: 30px;
+            
+
+            a{
+                font-family: $main-font;
+                font-size: 15px;
+                color: rgba(0,0,0,0.9);  
+                transition: all .3s ease-in-out;
+            }
 
             &:first-child{
                 margin-left: 0;
             }
 
-            a{
-                font-family: "Vibur", cursive;
-                font-size: 25px;
-                color:#fff;
+            &:hover{
+
+                a{
+                    color: #fff
+                }
             }
         }
     }

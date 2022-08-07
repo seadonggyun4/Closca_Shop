@@ -1,6 +1,12 @@
 import { useEffect } from "react";
+import disableScroll from "../../function/disableScroll";
+import enableScroll from "../../function/enableScroll";
+
 
 export default function Header() {
+      
+
+
     //LifeCiycle
     useEffect(() => {
       setTimeout(() => {
@@ -13,6 +19,8 @@ export default function Header() {
 
         container.classList.add('hide')
         footer.style.display = "none"
+        // 스크롤 방지
+        disableScroll()
   
         setTimeout(() => {
           titleEffect.classList.add('hide')
@@ -27,6 +35,8 @@ export default function Header() {
             setTimeout(() => {
               btnArea.classList.add('show')
               footer.style.display = "block"
+              // 스크롤 활성화
+              enableScroll()
             }, 1000)
             
           },15000)
