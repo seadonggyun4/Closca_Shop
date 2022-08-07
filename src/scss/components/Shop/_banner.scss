@@ -1,0 +1,267 @@
+//   ============================================================ banner ============================================================
+
+
+.banner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    height: 100vh;
+    background-color: rgba(10, 20, 40, 1);
+    // max-width: 1000px;
+    perspective: 500px;
+    text-align: center;
+    overflow: hidden;
+
+    .banner__title{
+        position: absolute;
+        top: 30%;
+        color: #c6e2ff;
+        font-size: 10rem;
+        font-family: 'Anton', sans-serif;
+        transform: translate3d(0, 15%, 0);
+        transition: all 1s ease-in-out;
+        opacity: 0;
+        text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(50, 230, 255, 1), 0 0 15px rgba(30, 132, 242, 0.92), 0 0 12px rgba(50, 230, 255, 0.78), 0 0 24px rgba(50, 230, 255, 0.78);
+
+        &.show{
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+    }
+
+    .banner__title--effect {
+        position: absolute;
+        top: 40%;
+        transform-style: preserve-3d;
+        will-change: transform;
+
+
+        .text {
+            position: absolute;
+            font-size: 10rem;
+            color: #fff;
+            line-height: 10rem;
+            font-family: 'Anton', sans-serif;
+            padding: 20px 0;
+            mix-blend-mode: screen;
+            transform-style: preserve-3d;
+            will-change: transform;
+            @for $i from 1 through 26 {
+            $key: $i - 1;
+            $param: 5;
+            &:nth-child(#{$i}) {
+                clip-path: polygon(
+                -30% + ($key * $param) 0,
+                -20% + ($key * $param) 0,
+                20% + ($key * $param) 100%,
+                0% + ($key * $param) 100%
+                );
+                animation: wave 2000ms $key * 200 - 10000ms ease-in-out infinite alternate;
+            }
+            }
+        }
+
+
+        @keyframes wave {
+        0% {
+            transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg);
+            color: rgba(0, 30, 100, 1);
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg);
+            color: rgba(50, 230, 255, 1);
+        }
+        }
+
+        &.hide{
+            display: none;
+        }
+    }
+
+    .banner__subtitle {
+        position: absolute;
+        top: 60%;
+        margin-top: 24px;
+        font-size: 22px;
+        line-height: 28px;
+        margin: 16px 0px 0px;
+        color: $gray;
+        font-weight: 300;
+        vertical-align: baseline;
+    }
+
+    .banner__btn__area {
+        position: absolute;
+        top: 75%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        transform: translate3d(0, 200%, 0);
+        transition: all 1.5s ease-in-out;
+        opacity: 0;
+        z-index: 1;
+    
+        button {
+            display: inline-block;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: color 0.3s ease 0s, border-color 0.3s ease 0s,
+            background-color 0.3s ease 0s;
+            text-decoration: none;
+            border: 2px solid rgb(255, 102, 97);
+            background-color: rgb(255, 102, 97);
+            font-size: 1.2rem;
+            line-height: 22px;
+            padding: 15px 24px;
+            color: rgb(255, 255, 255) !important;
+            line-height: 22px;
+        }
+
+        &.show{
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+
+    }
+
+    .banner__loading__area{
+        position: absolute;
+        top: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100%;
+        transition: all 1s ease-in-out;
+        opacity: 0;
+
+        .loading__word {
+            margin-bottom: 20px;
+            font-size: 4rem;
+            font-family: "Vibur", cursive;
+            text-align: center;
+            line-height: 1;
+            color: #c6e2ff;
+            text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(50, 230, 255, 1), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(50, 230, 255, 0.78), 0 0 54px rgba(50, 230, 255, 0.78);
+        }
+            
+            
+        .loading__bar {
+        background-color: #c6e2ff;
+        animation: loading 15s linear 1;
+        animation-delay: 10s;
+        border-radius: 10px;
+
+
+        @keyframes loading {
+            0% {
+            width: 0;
+            }
+            100% {
+            width: 100%;
+            }
+        }
+        }
+        
+        
+        .loading__bg {
+        color: #c6e2ff;
+        width: 250px;
+        height: 10px;
+        border: 1px solid #c6e2ff;
+        border-radius: 10px;
+        box-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(50, 230, 255, 0.78), 0 0 54px rgba(50, 230, 255, 0.78);
+        }
+
+        &.show{
+            opacity: 1;
+        }
+            
+    }
+
+
+    @media (max-width: 1000px) {
+    
+        .banner__title{
+            font-size: 8rem;
+        }
+    
+        .banner__title--effect{
+            .text{
+                font-size: 8rem;
+            }
+        }
+    
+        .banner__subtitle{
+            font-size: 16px;
+        }
+    
+        .banner__btn__area{
+            button{
+                padding: 10px 18px;
+                font-size: 1rem;
+            }
+        }
+    
+        .banner__loading__area{
+            .loading__word{
+                font-size: 3rem;
+            }
+    
+            .loading__bg{
+                width: 150px;
+            }
+        }
+    
+    }
+    
+    @media (max-width: 500px) {
+    
+        .banner__title{
+            font-size: 4rem;
+        }
+    
+        .banner__title--effect{
+            .text{
+                font-size: 4rem;
+            }
+        }
+    
+        .banner__subtitle{
+            font-size: 10px;
+        }
+    
+        .banner__btn__area{
+            button{
+                padding: 8px 15px;
+                font-size: .8rem;
+            }
+        }
+    
+        .banner__loading__area{
+            .loading__word{
+                font-size: 2rem;
+            }
+    
+            .loading__bg{
+                width: 100px;
+            }
+        }
+    
+    }
+}
+
+
+
+
+
+
+
+
+
+

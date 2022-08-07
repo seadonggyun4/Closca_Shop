@@ -1,0 +1,79 @@
+//   ============================================================ order ============================================================
+  
+aside {
+  flex: 2;
+  padding: 0.4rem;
+}
+
+
+
+
+.order {
+  position: sticky;
+  top: 12%;
+  left: 0;
+  margin-top: 100px;
+  margin-left: 50px;
+  border: 0.05rem solid $gray;
+  border-radius: 6px;
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  .order__body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0.6rem 0.8rem;
+    padding-bottom: 0;
+  }
+
+  .order__total {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+  }
+
+}
+
+
+//   ============================================================ empty ============================================================
+
+.empty {
+  position: sticky;
+  top: 12%;
+  left: 0;
+  margin-top: 100px;
+  margin-left: 50px;
+  background-color: #fff;
+  border: 0.05rem solid #fff;
+  color: $primary-alpha;
+  border-radius: 6px;
+  padding: 3.2rem 1.6rem;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  .empty__title,.empty__subtitle{
+    margin: 0.8rem auto;
+  }
+
+
+  .empty__subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .order{
+    margin-left: 0;
+  }
+
+  .empty{
+    margin-left: 0;
+  }
+}
+

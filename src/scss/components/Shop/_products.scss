@@ -1,0 +1,122 @@
+//   ============================================================ products ============================================================
+
+main {
+    padding: 0.4rem;
+}
+
+.products {
+    display: grid;
+    // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+    margin-top: 100px;
+
+    .product {
+        position: relative;
+        display: flex;
+        display: -ms-flexbox;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        margin-bottom: 30px;
+        border: 0.01rem solid #fff;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        overflow: hidden;
+    
+        .canvas{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .product__thumbnail{
+            padding-top: calc(64000% / 382);
+            padding-bottom: 33px;
+    
+            img{
+                display: none;
+            }
+        }
+    
+        .product__body{
+    
+            p{
+                padding: 0.8rem;
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+    
+            &:last-child{
+                padding-bottom: 0.8rem;
+            }
+    
+            .product__title {
+                margin-top: 25px;
+                padding: 0.8rem;
+                padding-bottom: 0;
+                font-size: 1rem;
+                line-height: 1.4;
+                font-size: 1.2rem;
+                color: $secondary;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+
+            }
+    
+            .product__price {
+                padding-top: 0.1rem;
+                width: 100%;
+                color: $primary-alpha;
+            }
+    
+            .product__desc {
+                font-size: 0.8rem;
+                padding-bottom: 0.8rem;
+            }
+        }
+    
+    }
+
+
+    @media (max-width: 1000px) {
+        grid-template-columns: repeat(2, 1fr);
+
+        .product{
+            .product__body{
+                .product__title{
+                    margin-top: 10px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
+
+        .product{
+            .product__body{
+                .product__title{
+                    margin-top: 10px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+

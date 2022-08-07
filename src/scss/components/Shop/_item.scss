@@ -1,0 +1,84 @@
+//   ============================================================ item ============================================================
+
+.item {
+  align-content: space-between;
+  align-items: center;
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-line-pack: justify;
+  flex-wrap: nowrap;
+
+  
+
+  .img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.4rem 0.4rem 0.4rem 0.2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+
+    .title {
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      -webkit-margin-before: 0px;
+      line-height: 1rem;
+      font-size: 0.9rem;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+  }
+
+  .action {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+
+    .price {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: #fff;
+      display: inline-block;
+      line-height: 1rem;
+      outline: none;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      vertical-align: middle;
+      white-space: nowrap;
+      font-size: 0.9rem;
+      height: 2rem;
+      padding: 0.45rem 0.6rem;
+      background: transparent;
+      border-color: transparent;
+      color: $primary;
+      cursor: default;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
+
+  
+
