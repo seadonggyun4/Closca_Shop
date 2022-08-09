@@ -84,8 +84,13 @@ export default function VerticalScroll(){
 
     // [ Life Ciycle ]  
     useEffect(() => {
+        const stop = false
+
         //window.pageYOffset 값을 저장하기 위함
         window.addEventListener('scroll', () => setScrollY(window.pageYOffset));
+        if(stop){
+            console.log(scrollY)
+        }
    
         verticalScroll()
         changeColor()
