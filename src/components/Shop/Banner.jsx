@@ -76,8 +76,11 @@ export default function Header() {
             setTimeout(() => {
               btnArea.classList.add('show')
               footer.style.display = "block"
-              // 스크롤 활성화
-              enableScroll()
+              setTimeout(() => {
+                // 스크롤 활성화
+                enableScroll()
+              }, 500)  
+
             }, 1000)
             
           },15000)

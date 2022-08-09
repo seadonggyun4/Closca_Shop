@@ -1,94 +1,98 @@
-.header{
-    @include flexbox;
-    position: fixed;
-    top: 0;
-    left: 0;
-    flex-shrink: 0;
-    padding: 0 25px;
-    height: 62px;
-    width: 100%;
-    white-space: nowrap;   
-    font-weight: 600;
-    font-size: 15px;
-    z-index: $header-z;
-
-    &-logo {
-        width: 116px;
-    }
-
-    &-menu-list {
+header{
+    overflow: hidden;
+    
+    .header{
         @include flexbox;
-        margin-left: auto;
-
-        .header-menu-item{
-            margin-left: 30px;
-            
-
-            a{
-                font-family: $main-font;
-                font-size: 15px;
-                color: rgba(0,0,0,0.9);  
-                transition: all .3s ease-in-out;
-            }
-
-            &:first-child{
-                margin-left: 0;
-            }
-
-            &:hover{
-
+        position: fixed;
+        top: 0;
+        left: 0;
+        flex-shrink: 0;
+        padding: 0 25px;
+        height: 62px;
+        width: 100%;
+        white-space: nowrap;   
+        font-weight: 600;
+        font-size: 15px;
+        z-index: $header-z;
+    
+        &-logo {
+            width: 116px;
+        }
+    
+        &-menu-list {
+            @include flexbox;
+            margin-left: auto;
+    
+            .header-menu-item{
+                margin-left: 30px;
+                
+    
                 a{
-                    color: #fff
+                    font-family: $main-font;
+                    font-size: 15px;
+                    color: rgba(0,0,0,0.9);  
+                    transition: all .3s ease-in-out;
+                }
+    
+                &:first-child{
+                    margin-left: 0;
+                }
+    
+                &:hover{
+    
+                    a{
+                        color: #fff
+                    }
                 }
             }
         }
-    }
-
-    &-nav-button {
-        @include pos-center-y;
-        right: 8%;
-        padding: 0;
-        width: 30px;
-        cursor: pointer;
-
-        .line{
-            margin: 5px 0;
+    
+        &-nav-button {
+            @include pos-center-y;
+            right: 8%;
             padding: 0;
             width: 30px;
-            height: 2px;
-            background: #fff;
-            transition: all 700ms cubic-bezier(.9, 0, .33, 1);
-
-            &.line--1{
+            cursor: pointer;
+    
+            .line{
+                margin: 5px 0;
+                padding: 0;
                 width: 30px;
-                transform: rotate(0) translateY(0);
-
-                &.line-cross{
+                height: 2px;
+                background: #000;
+                transition: all 700ms cubic-bezier(.9, 0, .33, 1);
+    
+                &.line--1{
                     width: 30px;
-                    transform: rotate(45deg) translateY(10px);
-                    background: #fff;
+                    transform: rotate(0) translateY(0);
+    
+                    &.line-cross{
+                        width: 30px;
+                        transform: rotate(45deg) translateY(10px);
+                        background: #000;
+                    }
                 }
-            }
-
-            &.line--2{
-                width: 28px;
-                transform: translateX(0);
-
-                &.line-fade-out{
+    
+                &.line--2{
                     width: 28px;
-                    transform: translate(30px);
-                    opacity: 0;
+                    transform: translateX(0);
+    
+                    &.line-fade-out{
+                        width: 28px;
+                        transform: translate(30px);
+                        opacity: 0;
+                    }
                 }
-            }
-
-            &.line--3{
-                width: 20px;
-                transform: rotate(0) translateY(0);
-
-                &.line-cross{
-                    width: 30px;
-                    transform: rotate(-45deg) translateY(-10px);
-                    background: #fff;
+    
+                &.line--3{
+                    width: 20px;
+                    transform: rotate(0) translateY(0);
+    
+                    &.line-cross{
+                        width: 30px;
+                        transform: rotate(-45deg) translateY(-10px);
+                        background: #000;
+                    }
                 }
             }
         }

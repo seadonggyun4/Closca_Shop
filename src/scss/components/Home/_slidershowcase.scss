@@ -1,0 +1,274 @@
+.swiperContainer {
+    @include column-flexbox;
+    // padding: 0 30px;
+    height: 100vh;
+    width: 100%;
+    background-color: $beach;
+    overflow: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+    transition: background-color 1s ease-in-out;
+  
+    .mySwiper {
+      @include flexbox;
+      position: relative;
+      // flex-grow: 1;
+      width: 50%;
+  
+      /* ============== [ swiper-slide]  ==============*/
+      .swiper-slide{
+        @include flexbox;
+        position: relative;
+        padding: 42px 0 30px;
+        flex-grow: 1;
+        height: 100vh;
+  
+  
+        .content {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          max-width: 320px;
+          max-height: 500px;  /* 추가 */
+  
+          .content-header{
+              .content-title-top {
+                text-transform: uppercase;
+                font-size: 14px;
+                letter-spacing: 4px;
+                font-weight: 600;
+                transition-delay: 0.2s;
+              }
+              .content-title {
+                font-family: $italic-font;
+                font-size: 100px;
+                font-weight: 400;
+                margin-top: 10px;
+                line-height: 1em;
+                transition-delay: 0.3s;
+              }
+              .content-subtitle {
+                font-family: $italic-font;
+                font-weight: 400;
+                font-size: 32px;
+                margin-top: 14px;
+                margin-bottom: 60px;
+                transition-delay: 0.4s;
+              }
+          }
+  
+          .content-main{
+              &__title {
+                font-size: 26px;
+                font-family: $italic-font;
+                font-style: italic;
+                margin-bottom: 14px;
+                transition-delay: 0.2s;
+              }
+              &__subtitle {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 24px;
+                letter-spacing: -0.01em;
+                transition-delay: 0.3s;
+              }
+              .more-menu {
+                font-size: 13px;
+                font-weight: 500;
+                display: flex;
+                align-items: images;
+                transition-delay: 0.4s;
+              }
+  
+              .more-menu svg {
+                width: 28px;
+                height: 18px;
+                margin-left: 10px;
+              }
+          }
+          
+        }
+  
+        .images {
+          display: flex;
+          margin-left: 120px;
+          position: relative;
+          flex-shrink: 0;
+  
+           .images-bg {
+            width: 320px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 160px;
+          }
+  
+           .images-bottle {
+            position: absolute;
+            top: 25%;
+            left: 0;
+            transform: scale(1.6);
+            max-width: 100%;
+          }
+        }
+  
+      }
+  
+      /* ============== [ swiper-button]  ==============*/
+      .swiper-button-prev,
+      .swiper-button-next{
+        width: 50px;
+        height: 50px;
+        color: #000;
+        // border: 1px solid #000;
+        border-radius: 50%;
+        transition: all .3s ease-in-out ;
+  
+        &::after{
+          font-size: 30px;
+          // transition: all .3s ease-in-out ;
+        }
+  
+        &:hover{
+          background: rgba($color: #000000, $alpha: .7);
+          color: #fff;
+        }
+      }
+    }
+}
+  
+@media (max-width: 1000px) {
+  .swiperContainer{
+    .mySwiper{
+      width: 100%;
+
+      .swiper-slide{
+        .content{
+          padding: 0 20px;
+        }
+
+        .images{
+          margin-left: 0;
+        }
+      } 
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .swiperContainer{
+    .mySwiper{
+      .swiper-slide{
+        flex-direction: column-reverse;
+
+        .content{
+          padding: 50px 100px 0 100px;
+
+          .content-header{
+            .content-title-top{
+              font-size: .8rem;
+            }
+
+            .content-title{
+              font-size: 4rem;
+            }
+
+            .content-subtitle{
+              margin-bottom: 15px;
+              font-size: 2rem;
+            }
+          }
+
+          .content-main{
+            .content-main__title{
+              font-size: 1rem;
+            }
+
+            .content-main__subtitle{
+              display: none;
+            }
+          }
+        }
+  
+        .images{
+          .images-bg{
+            width: 120px;
+            height: 250px;
+          }
+  
+          .images-bottle{
+            top: 40%;
+            transform: scale(2);
+          }
+        }
+      }
+
+    }
+  }
+}
+  
+/* ========================================================== [ swiper-slide 틀 정의 부분 ]  ==========================================================*/
+.swiper {
+  overflow: inherit;
+
+  //active가 아닐때
+  .swiper-slide {
+    opacity: 0 !important;
+    transition: 0.4s;
+
+    .content-header > *,
+    .content-main > * {
+      transform: translateY(-30px);
+      opacity: 0;
+      transition-duration: 0.8s;
+    }
+
+    .images-bg{
+      transition-duration: 0.6s;
+      opacity: 0;
+      object-position: 60%;
+    }
+
+    .images-bottle{
+      transition-duration: 0.8s;
+      transform: scale(1.2);
+      opacity: 0;
+    }
+  }
+
+  //active일 때
+  .swiper-slide-active {
+    opacity: 1 !important;
+
+    .content-header > *,
+    .content-main > * {
+      transform: none;
+      opacity: 1;
+    }
+
+    .images-bg{
+      opacity: 1;
+      transform: none;
+      object-position: 50%;
+    }
+
+    .images-bottle{
+      opacity: 1;
+      transform: scale(1.6);
+    }
+
+  }
+}
+  
+/* ============ [ swiper-colorchange ]  ============ */
+[data-sld="1"] .swiperContainer{
+  background-color: $savanna;
+}
+
+[data-sld="2"] .swiperContainer{
+  background-color: $glacier;
+}
+
+[data-sld="3"] .swiperContainer{
+  background-color: $coral;
+}
+
