@@ -9,6 +9,7 @@
       align-items: center;
       padding: 10px;
       text-align: center;
+      
 
 
       .titleSection__background {
@@ -25,7 +26,7 @@
         }
       }
 
-      h1 {
+      h2 {
         color: #fff;
         font-size: 80px;
         line-height: 1.1;
@@ -33,6 +34,33 @@
         max-width: 600px;
         z-index: 3;
         position: relative;
+
+        &.active{
+          div{
+            animation: popup 1s ease both;
+          }
+          div.delay0{
+            animation-delay: 0s;
+          }
+          div.delay1{
+            animation-delay: 0.1s;
+          }
+        }
+
+        @keyframes popup {
+          0%{
+            transform: translate3d(0, 150% ,0) scale(.5);
+          }
+          60%{
+            transform: translate3d(0, -10% ,0) scale(1.00005);
+          }
+          85%{
+            transform: translate3d(0, 0, 0) scale(.9);
+          }
+          100%{
+            transform: scale(1);
+          }
+        }
       }
 
       p {
@@ -143,7 +171,7 @@
     @media (max-width: 500px) {
       .titleSection__top {
     
-        h1{
+        h2{
           font-size: 32px;
         }
       }

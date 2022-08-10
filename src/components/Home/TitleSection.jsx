@@ -3,52 +3,58 @@ import { useEffect } from "react"
 import ScrollMagic from 'scrollmagic' 
 
 export default function TitleSection(){
+
     //Life Ciycle
     useEffect(() => {
         // ============================================================  [ Title section animation ] ============================================================
         // scrollMagic 사용
-        const heroBackground = document.querySelector('.titleSection__background')
+        const titleBackground = document.querySelector('.titleSection__top .titleSection__background')
+        const titleH2 = document.querySelector('.titleSection__top h2')
 
         new ScrollMagic
           .Scene({
-            triggerElement: heroBackground,
-            triggerHook: .8,
-            // duration: "40%"
+            triggerElement: titleBackground,
+            triggerHook: .7,
           })
-          .setClassToggle(heroBackground, 'active') // setClassToggle(적용될 식별자, 토글될 클래스 명)
+          .setClassToggle(titleBackground, 'active') // setClassToggle(적용될 식별자, 토글될 클래스 명)
           .addTo(new ScrollMagic.Controller());
+
+        new ScrollMagic
+          .Scene({
+            triggerElement: titleH2,
+            triggerHook: .7,
+          })
+          .setClassToggle(titleH2, 'active') // setClassToggle(적용될 식별자, 토글될 클래스 명)
+          .addTo(new ScrollMagic.Controller()); 
+
+
 
 
         // scrollMagic 사용
-        const productImage = document.querySelector('.product-img')   
-
+        const productImage = document.querySelector('.titleSection__bottom .product-img')   
         new ScrollMagic
           .Scene({
             triggerElement: productImage,
-            triggerHook: .8,
-            // duration: "40%"
+            triggerHook: .7,
           })
           .setClassToggle(productImage, 'active') // setClassToggle(적용될 식별자, 토글될 클래스 명)
           .addTo(new ScrollMagic.Controller());
 
-        const textContentH3 = document.querySelector('.text-content h3')
-        const textContentP = document.querySelector('.text-content p')
 
 
+        const textContentH3 = document.querySelector('.titleSection__bottom .text-content h3')
+        const textContentP = document.querySelector('.titleSection__bottom .text-content p')
         new ScrollMagic
           .Scene({
             triggerElement: textContentH3,
-            triggerHook: .8,
-            // duration: "40%"
+            triggerHook: .7,
           })
           .setClassToggle(textContentH3, 'active') // setClassToggle(적용될 식별자, 토글될 클래스 명)
           .addTo(new ScrollMagic.Controller());
-
-
         new ScrollMagic
           .Scene({
             triggerElement: textContentP,
-            triggerHook: .8,
+            triggerHook: .7,
             // duration: "40%"
           })
           .setClassToggle(textContentP, 'active') // setClassToggle(적용될 식별자, 토글될 클래스 명)
@@ -59,7 +65,10 @@ export default function TitleSection(){
         <section className="titleSection">
             <div className="titleSection__top">
                 <div>
-                    <h1>Our goal is to create design.</h1>
+                    <h2>
+                      <div className="delay0">Our goal is to</div>
+                      <div className="delay1">create design.</div>
+                    </h2>
                     <p>
                         From have searching their not business, officers. Question. Are
                         like…. Periodic structure the evils what's present derive bit
