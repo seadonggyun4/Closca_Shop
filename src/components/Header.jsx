@@ -17,6 +17,10 @@ export default function Header(){
         link.classList.toggle('fade-in');
     }
 
+    const reload = () => {
+        window.location.reload();
+    }
+
     return(
         <header > 
             <div className="header glassmorphism">
@@ -26,10 +30,10 @@ export default function Header(){
                 </Link>
                 {/* <!-- header-menu --> */}
                 <ul className="header-menu-list sm-hidden" >
-                    <li className="header-menu-item"><Link to={"/"}>Home</Link></li>
-                    <li className="header-menu-item"><Link to={"/shop"}>Shop</Link></li>
-                    <li className="header-menu-item"><Link to={"/shop"}>Shop</Link></li>
-                    <li className="header-menu-item"><Link to={"/shop"}>Shop</Link></li> 
+                    <li className="header-menu-item" ><Link to={"/"}>Home</Link></li>
+                    <li className="header-menu-item" onClick={reload}><Link to={"/bottle"}>Bottle</Link></li>
+                    <li className="header-menu-item" onClick={reload}><Link to={"/helmet"}>Helmet</Link></li>
+                    <li className="header-menu-item" onClick={reload}><a href='https://closca.com/'>RealSite</a></li> 
                 </ul>
                 {/* <!-- header-nav-button --> */}
                 <div className="header-nav-button sm-only" onClick={activeNav}>

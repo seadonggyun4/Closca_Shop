@@ -45,7 +45,37 @@ export default function Header() {
         window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
     }
 
-      
+    // 쿠키 저장 메서드
+    const settitleCookie = () => {
+      // 변수를 선언
+      var date = new Date();
+      date.setDate(date.getDate() + 1);
+
+      var titleCookie = "";
+      titleCookie += "title=on;";
+      titleCookie += "expires=" + date.toUTCString();
+
+      // 쿠키에 넣는다.
+      document.cookie = titleCookie;
+    }
+
+
+    // 쿠키 가져오기 메서드
+    const getCookie = (Name) => {
+      let search = Name + "="
+      if (document.cookie.length > 0) {
+        let offset = document.cookie.indexOf(search)
+        if (offset !== -1) {
+          offset += search.length
+			
+          let end = document.cookie.indexOf(";", offset)
+        
+          if (end === -1) end = document.cookie.length
+          return unescape(document.cookie.substring(offset, end))
+      }
+      }
+      return "";
+		}
 
 
     //LifeCiycle
@@ -58,34 +88,44 @@ export default function Header() {
         const btnArea = document.querySelector('.banner .banner__btn__area')
         const loadingArea = document.querySelector('.banner .banner__loading__area')
 
-        container.classList.add('hide')
-        footer.style.display = "none"
-        // 스크롤 방지
-        disableScroll()
-  
-        setTimeout(() => {
-          titleEffect.classList.add('hide')
-          title.classList.add('show')
-          loadingArea.classList.add('show')
+        if(getCookie("title") === 'on'){
           container.classList.remove('hide')
-
-
+          title.classList.add('show')
+          title.classList.add('active')
+          btnArea.classList.add('show')
+        } else {
+          titleEffect.classList.add('show')
+          container.classList.add('hide')
+          footer.style.display = "none"
+          // 스크롤 방지
+          disableScroll()
+    
           setTimeout(() => {
-            loadingArea.classList.remove('show')
-            
+            titleEffect.classList.remove('show')
+            title.classList.add('show')
+            loadingArea.classList.add('show')
+            container.classList.remove('hide')
+  
+  
             setTimeout(() => {
-              btnArea.classList.add('show')
-              footer.style.display = "block"
+              loadingArea.classList.remove('show')
+              
               setTimeout(() => {
-                // 스크롤 활성화
-                enableScroll()
-              }, 500)  
-
-            }, 1000)
+                title.classList.add('active')
+                btnArea.classList.add('show')
+                footer.style.display = "block"
+                setTimeout(() => {
+                  enableScroll()// 스크롤 활성화
+                  settitleCookie() //쿠키값 세팅
+                }, 1000)  
+  
+              }, 500)
+              
+            },15000)
             
-          },15000)
-          
-        }, 10000);
+          }, 10000);
+        }
+
       }, 1)
     },[])
 

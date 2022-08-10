@@ -22,21 +22,27 @@
         top: 30%;
         color: #c6e2ff;
         font-size: 10rem;
-        font-family: 'Anton', sans-serif;
+        // font-family: 'Anton', sans-serif;
         transform: translate3d(0, 15%, 0);
         transition: all 1s ease-in-out;
         opacity: 0;
-        text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(50, 230, 255, 1), 0 0 15px rgba(30, 132, 242, 0.92), 0 0 12px rgba(50, 230, 255, 0.78), 0 0 24px rgba(50, 230, 255, 0.78);
+        text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 10px $beach, 0 0 10px $beach, 0 0 10px $beach, 0 0 20px $beach;
 
         &.show{
             transform: translate3d(0, 0, 0);
             opacity: 1;
+        }
+
+        &.active{
+            color: $beach;
+            text-shadow: none;
         }
     }
 
     .banner__title--effect {
         position: absolute;
         top: 40%;
+        display: none;
         transform-style: preserve-3d;
         will-change: transform;
 
@@ -54,32 +60,65 @@
             @for $i from 1 through 26 {
             $key: $i - 1;
             $param: 5;
-            &:nth-child(#{$i}) {
-                clip-path: polygon(
-                -30% + ($key * $param) 0,
-                -20% + ($key * $param) 0,
-                20% + ($key * $param) 100%,
-                0% + ($key * $param) 100%
-                );
-                animation: wave 2000ms $key * 200 - 10000ms ease-in-out infinite alternate;
-            }
+                &:nth-child(#{$i}) {
+                    clip-path: polygon(
+                    -30% + ($key * $param) 0,
+                    -20% + ($key * $param) 0,
+                    20% + ($key * $param) 100%,
+                    0% + ($key * $param) 100%
+                    );
+                    animation: wave 2000ms $key * 200 - 10000ms ease-in-out infinite alternate;
+                }
             }
         }
 
 
         @keyframes wave {
-        0% {
-            transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg);
-            color: rgba(0, 30, 100, 1);
-        }
-        100% {
-            transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg);
-            color: rgba(50, 230, 255, 1);
-        }
+            0% {
+                transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg);
+                color: rgba(0, 30, 100, 1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg);
+                color: $beach;
+            }
         }
 
-        &.hide{
-            display: none;
+        @keyframes wave1 {
+            0% {
+                transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg);
+                color: rgba(0, 30, 100, 1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg);
+                color: $savanna;
+            }
+        }
+
+        @keyframes wave2 {
+            0% {
+                transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg);
+                color: rgba(0, 30, 100, 1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg);
+                color: $glacier;
+            }
+        }
+
+        @keyframes wave3 {
+            0% {
+                transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg);
+                color: rgba(0, 30, 100, 1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg);
+                color: $coral;
+            }
+        }
+
+        &.show{
+            display: show;
         }
     }
 
@@ -113,8 +152,8 @@
             transition: color 0.3s ease 0s, border-color 0.3s ease 0s,
             background-color 0.3s ease 0s;
             text-decoration: none;
-            border: 2px solid rgb(255, 102, 97);
-            background-color: rgb(255, 102, 97);
+            border: 2px solid $beach;
+            background-color: $beach;
             font-size: 1.2rem;
             line-height: 22px;
             padding: 15px 24px;
@@ -147,35 +186,35 @@
             text-align: center;
             line-height: 1;
             color: #c6e2ff;
-            text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(50, 230, 255, 1), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(50, 230, 255, 0.78), 0 0 54px rgba(50, 230, 255, 0.78);
+            text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px $beach, 0 0 21px $beach, 0 0 34px $beach, 0 0 54px $beach;
         }
             
             
         .loading__bar {
-        background-color: #c6e2ff;
-        animation: loading 15s linear 1;
-        animation-delay: 10s;
-        border-radius: 10px;
+            background-color: #c6e2ff;
+            animation: loading 15s linear 1;
+            animation-delay: 10s;
+            border-radius: 10px;
 
 
-        @keyframes loading {
-            0% {
-            width: 0;
+            @keyframes loading {
+                0% {
+                width: 0;
+                }
+                100% {
+                width: 100%;
+                }
             }
-            100% {
-            width: 100%;
-            }
-        }
         }
         
         
         .loading__bg {
-        color: #c6e2ff;
-        width: 250px;
-        height: 10px;
-        border: 1px solid #c6e2ff;
-        border-radius: 10px;
-        box-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(50, 230, 255, 0.78), 0 0 54px rgba(50, 230, 255, 0.78);
+            color: #c6e2ff;
+            width: 250px;
+            height: 10px;
+            border: 1px solid #c6e2ff;
+            border-radius: 10px;
+            box-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px $beach, 0 0 21px $beach, 0 0 34px $beach, 0 0 54px $beach;
         }
 
         &.show{
@@ -223,7 +262,8 @@
     @media (max-width: 500px) {
     
         .banner__title{
-            font-size: 4rem;
+            position: static;
+            font-size: 3rem;
         }
     
         .banner__title--effect{
@@ -233,7 +273,7 @@
         }
     
         .banner__subtitle{
-            font-size: 10px;
+            font-size: 13px;
         }
     
         .banner__btn__area{
@@ -257,7 +297,144 @@
 }
 
 
+/* ============ [ Colorchange ]  ============ */
+[data-sld="1"] .banner{
+    .banner__title{
+        text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 10px $savanna, 0 0 10px $savanna, 0 0 10px $savanna, 0 0 20px $savanna;
 
+        &.active{
+            color: $savanna;
+            text-shadow: none;
+        }
+    }
+
+    .banner__title--effect{
+        .text {
+            @for $i from 1 through 26 {
+                $key: $i - 1;
+                $param: 5;
+                &:nth-child(#{$i}) {
+                    clip-path: polygon(
+                    -30% + ($key * $param) 0,
+                    -20% + ($key * $param) 0,
+                    20% + ($key * $param) 100%,
+                    0% + ($key * $param) 100%
+                    );
+                    animation: wave1 2000ms $key * 200 - 10000ms ease-in-out infinite alternate;
+                }
+            }
+        }
+    }
+
+    .banner__btn__area{
+        button{
+            border: 2px solid $savanna;
+            background-color: $savanna;
+        }
+    }
+
+    .banner__loading__area{
+        .loading__word{
+            text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px $savanna, 0 0 21px $savanna, 0 0 34px $savanna, 0 0 54px $savanna;
+        }
+
+        .loading__bg{
+            box-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px $savanna, 0 0 21px $savanna, 0 0 34px $savanna, 0 0 54px $savanna;
+        }
+    }
+}
+
+[data-sld="2"] .banner{
+    .banner__title{
+        text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 10px $glacier, 0 0 10px $glacier, 0 0 10px $glacier, 0 0 20px $glacier;
+
+        &.active{
+            color: $glacier;
+            text-shadow: none;
+        }
+    }
+
+    .banner__title--effect{
+        .text {
+            @for $i from 1 through 26 {
+                $key: $i - 1;
+                $param: 5;
+                &:nth-child(#{$i}) {
+                    clip-path: polygon(
+                    -30% + ($key * $param) 0,
+                    -20% + ($key * $param) 0,
+                    20% + ($key * $param) 100%,
+                    0% + ($key * $param) 100%
+                    );
+                    animation: wave2 2000ms $key * 200 - 10000ms ease-in-out infinite alternate;
+                }
+            }
+        }
+    }
+
+    .banner__btn__area{
+        button{
+            border: 2px solid $glacier;
+            background-color: $glacier;
+        }
+    }
+
+    .banner__loading__area{
+        .loading__word{
+            text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px $glacier, 0 0 21px $glacier, 0 0 34px $glacier, 0 0 54px $glacier;
+        }
+
+        .loading__bg{
+            box-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px $glacier, 0 0 21px $glacier, 0 0 34px $glacier, 0 0 54px $glacier;
+        }
+    }
+}
+
+[data-sld="3"] .banner{
+    .banner__title{
+        text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 10px $coral, 0 0 10px $coral, 0 0 10px $coral, 0 0 20px $coral;
+
+        &.active{
+            color: $coral;
+            text-shadow: none;
+        }
+    }
+
+    .banner__title--effect{
+        .text {
+            @for $i from 1 through 26 {
+                $key: $i - 1;
+                $param: 5;
+                &:nth-child(#{$i}) {
+                    clip-path: polygon(
+                    -30% + ($key * $param) 0,
+                    -20% + ($key * $param) 0,
+                    20% + ($key * $param) 100%,
+                    0% + ($key * $param) 100%
+                    );
+                    animation: wave3 2000ms $key * 200 - 10000ms ease-in-out infinite alternate;
+                }
+            }
+        }
+    }
+
+    .banner__btn__area{
+        button{
+            border: 2px solid $coral;
+            background-color: $coral;
+        }
+    }
+
+    .banner__loading__area{
+        .loading__word{
+            text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px $coral, 0 0 21px $coral, 0 0 34px $coral, 0 0 54px $coral;
+        }
+
+        .loading__bg{
+            box-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px $coral, 0 0 21px $coral, 0 0 34px $coral, 0 0 54px $coral;
+        }
+    }
+}
 
 
 

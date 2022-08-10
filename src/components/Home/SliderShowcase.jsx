@@ -6,16 +6,27 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function SliderShowcase(){
+    // 쿠키 저장 메서드
+    const setslideCookie = (index) => {
+        var slideCookie = "";
+        slideCookie += `slide=${index}`;
+
+        // 쿠키에 넣는다.
+        document.cookie = slideCookie;
+    }
+
 
     const onSwiper = () => {
         
     };
 
     const onSlideChange = (sld) => {
-      //슬라이드 바뀔때 data-sld 속성 생성
-      document.body.setAttribute('data-sld', sld.realIndex);
+        //슬라이드 바뀔때 data-sld 속성 생성
+        document.body.setAttribute('data-sld', sld.realIndex);
 
-      console.log(sld.realIndex)
+        //쿠키 세팅
+        const index = sld.realIndex
+        setslideCookie(index)
     };
 
 

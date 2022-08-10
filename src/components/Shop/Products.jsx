@@ -96,15 +96,12 @@ export default function Products() {
           document.querySelectorAll('.product').forEach(product => {
             const canvas = product.querySelector('.canvas')
             const planeElement = product.querySelector('.product__thumbnail')
+
+            
             new WebglHover({
               canvas,
               planeElement
             })
-
-            //canvas가 두개 생성되는 버그가 있는데 해당 버그를 잡기 위함
-            setTimeout(() => {
-              canvas.children[1].remove()
-            }, 1000);
           })
 
     },[])
@@ -132,7 +129,8 @@ export default function Products() {
                     </div>
                     <div className="product__body">
                         <div className="product__title">
-                            <div className="btn btn--primary float--right" onClick={click}>
+                            <div className="btn btn--primary float--right" onClick={click} style={{marginLeft: 15}}>
+                                Add Cart
                                 <i className="icon icon--plus"></i>
                             </div>
                             {title}

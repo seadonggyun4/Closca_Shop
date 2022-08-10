@@ -4,9 +4,9 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     background: #fff;
-    border: 0.05rem solid $secondary;
+    border: 0.05rem solid $beach;
     border-radius: 6px;
-    color: $secondary;
+    color: $beach;
     cursor: pointer;
     display: inline-block;
     line-height: 1rem;
@@ -20,25 +20,11 @@
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
-    font-size: 0.9rem;
+    font-size: 1rem;
     height: 2rem;
     padding: 0.45rem 0.6rem;
 }
 
-.btn:focus,
-.btn:hover {
-    background: $gray;
-    border-color: $primary;
-    text-decoration: none;
-}
-
-.btn[disabled],
-.btn:disabled,
-.btn.disabled {
-    cursor: default;
-    opacity: 0.5;
-    pointer-events: none;
-}
 
 .btn.btn--primary {
     background: $primary;
@@ -48,36 +34,34 @@
 
 .btn.btn--primary:focus,
 .btn.btn--primary:hover {
-    background: $secondary;
-    border-color: $secondary;
-    color: $primary;
+    background: $beach;
+    border-color: $beach;
 }
 
 .btn.btn--primary:active,
 .btn.btn--primary.active {
     background: $primary;
     border-color: $primary;
-    color: $secondary;
+    color: $beach;
 }
 
 .btn.btn--secondary {
-    background: $secondary;
-    border-color: $secondary;
-    color: $primary;
+    background: $beach;
+    border-color: $beach;
+    color: #fff;
 }
 
 .btn.btn--secondary:focus,
 .btn.btn--secondary:hover {
     background: $primary;
     border-color: $primary;
-    color: $gray;
 }
 
 .btn.btn--secondary:active,
 .btn.btn--secondary.active {
     background: $primary;
     border-color: $primary;
-    color: $secondary;
+    color: $beach;
 }
 
 .btn.btn--link {
@@ -90,7 +74,7 @@
 .btn.btn--link:hover,
 .btn.btn--link:active,
 .btn.btn--link.active {
-    color: $secondary;
+    color: #fff;
 }
 
 .btn.btn--clear {
@@ -116,7 +100,120 @@
     content: "\2715";
 }
 
+.btn.btn--link.btn--icon:hover{
+    background: $beach;
+}
+
 .btn .icon {
     vertical-align: -10%;
 }
+
+
+
+/* ============ [ Colorchange ]  ============ */
+[data-sld="1"] {
+    .btn.btn--primary:focus,
+    .btn.btn--primary:hover {
+        background: $savanna;
+        border-color: $savanna;
+    }
+
+    .btn.btn--primary:active,
+    .btn.btn--primary.active {
+        color: $savanna;
+    }
+
+    .btn.btn--secondary {
+        background: $savanna;
+        border-color: $savanna;
+    }
+
+    .btn.btn--secondary:active,
+    .btn.btn--secondary.active {
+        color: $savanna;
+    }
+
+    .btn.btn--link:focus,
+    .btn.btn--link:hover,
+    .btn.btn--link:active,
+    .btn.btn--link.active {
+        color: $savanna;
+    }
+
+    .btn.btn--link.btn--icon:hover{
+        background: $savanna;
+        color: #fff;
+    }
+}
+
+[data-sld="2"] {
+    .btn.btn--primary:focus,
+    .btn.btn--primary:hover {
+        background: $glacier;
+        border-color: $glacier;
+    }
+
+    .btn.btn--primary:active,
+    .btn.btn--primary.active {
+        color: $glacier;
+    }
+
+    .btn.btn--secondary {
+        background: $glacier;
+        border-color: $glacier;
+    }
+
+    .btn.btn--secondary:active,
+    .btn.btn--secondary.active {
+        color: $glacier;
+    }
+
+    .btn.btn--link:focus,
+    .btn.btn--link:hover,
+    .btn.btn--link:active,
+    .btn.btn--link.active {
+        color: $glacier;
+    }
+
+    .btn.btn--link.btn--icon:hover{
+        background: $glacier;
+        color: #fff;
+    }
+}
+
+[data-sld="3"] {
+    .btn.btn--primary:focus,
+    .btn.btn--primary:hover {
+        background: $coral;
+        border-color: $coral;
+    }
+
+    .btn.btn--primary:active,
+    .btn.btn--primary.active {
+        color: $coral;
+    }
+
+    .btn.btn--secondary {
+        background: $coral;
+        border-color: $coral;
+    }
+
+    .btn.btn--secondary:active,
+    .btn.btn--secondary.active {
+        color: $coral;
+    }
+
+    .btn.btn--link:focus,
+    .btn.btn--link:hover,
+    .btn.btn--link:active,
+    .btn.btn--link.active {
+        color: $coral;
+    }
+
+    .btn.btn--link.btn--icon:hover{
+        background: $coral;
+        color: #fff;
+    }
+}
+
 

@@ -63,11 +63,15 @@
                 padding-bottom: 0;
                 font-size: 1rem;
                 line-height: 1.4;
-                font-size: 1.2rem;
-                color: $secondary;
+                font-size: 1.5rem;
+                color: $beach;
                 overflow:hidden;
                 text-overflow:ellipsis;
                 white-space:nowrap;
+
+                .icon{
+                    margin-left: 7px;
+                }
 
             }
     
@@ -112,6 +116,20 @@
         }
     }
 
+}
+
+
+/* ============ [ Colorchange ]  ============ */
+[data-sld="1"] .products .product .product__body .product__title{
+    color: $savanna;
+}
+  
+[data-sld="2"] .products .product .product__body .product__title{
+    color: $glacier;
+}
+  
+[data-sld="3"] .products .product .product__body .product__title{
+    color: $coral;
 }
 
 

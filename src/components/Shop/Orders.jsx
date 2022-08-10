@@ -16,7 +16,7 @@ export default function Orders(){
             return prototype.price * quantity
         }).reduce((l, r) => l + r, 0)
     }, [orders, products])
-    console.log(orders)
+    // console.log(orders)
 
     // 주문목록상태 가 없을때
     if(orders.length === 0){
@@ -53,7 +53,7 @@ export default function Orders(){
                                     </div>
                                     <div className="action">
                                         <p className="price">${prototype.price * order.quantity}</p>
-                                        <button className="btn btn--link" onClick={click}>
+                                        <button className="btn btn--link btn--icon" onClick={click}>
                                             <i className="icon icon--cross" />
                                         </button>
                                     </div>
@@ -69,12 +69,12 @@ export default function Orders(){
                             <div className="action">
                                 <div className="price">${totalPrice}</div>
                             </div>
-                            <button className="btn btn--link" onClick={removeAll}>
+                            <button className="btn btn--link btn--icon" onClick={removeAll}>
                                 <i className="icon icon--delete" />
                             </button>
                         </div>
                     </div>
-                    <button className="btn btn--secondary" style={{margin: 10}}>Check Out</button>
+                    <button className="btn btn--secondary" style={{margin: 10, height: 50}}>Check Out</button>
                 </div>
             </aside> 
         )
