@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import useActions from "../../hooks/useActions"
 import useOrders from "../../hooks/useOrders"
 import useProducts from "../../hooks/useProducts"
@@ -16,10 +16,72 @@ export default function Orders(){
             return prototype.price * quantity
         }).reduce((l, r) => l + r, 0)
     }, [orders, products])
-    // console.log(orders)
+
+    
+    // ==================== [ 세션 스토리지 실패의 흔적들 ...] ====================
+    
+    // orders.forEach((order, i) => {
+    //     // 주문 세션 저장 메서드
+    //     const setIdSettion = (id) => {
+    //         sessionStorage.setItem(`key${i}`, id);
+    //         sessionStorage.setItem(`length`, i);
+    //     }
+
+    //     setIdSettion(order.id)
+    // })
+
+    // // 주문 길이 가져오기 메서드
+    // const getLengthSettion = () => {
+    //     return sessionStorage.getItem(`length`)
+    // }
+    // const length = getLengthSettion()
+
+    // useEffect(() => {
+    //     for (let i = 0; i < length + 1; i++) {
+    //         // 주문 세션 가져오기 메서드
+    //         const getIdSettion = (i) => {
+    //             return sessionStorage.getItem(`key${i}`)
+    //         }
+    //         const ordersID = getIdSettion(length)
+            
+    //         const prototype = products.find(p => p.id === ordersID)
+    
+    //         const click = () => {
+    //             remove(ordersID)
+    //         }
+
+    //         if(prototype !== undefined){
+    //             const orderBody = document.querySelector('.order__body')
+    //             const item = document.createElement('div')
+    //             item.classList.add('item')
+    //             item.innerHTML = `<div class="img">
+    //                                             <img src=${prototype.thumbnail} alt="상품 이미지!!"/>
+    //                                         </div>
+    //                                         <div class="content">
+    //                                             <p class="title"> 1 X ${prototype.title}</p>
+    //                                         </div>
+    //                                         <div class="action">
+    //                                             <p class="price">${prototype.price * 1}</p>
+    //                                             <button class="btn btn--link btn--icon">
+    //                                                 <i class="icon icon--cross" />
+    //                                             </button>
+    //                                         </div>`    
+    //             orderBody.appendChild(item)
+    //         }
+        
+
+    //     }
+    // })
+
+
+
+
+    
+    
+
 
     // 주문목록상태 가 없을때
-    if(orders.length === 0){
+    if(orders.length <= 0){
         return(
            <aside>
                 <div className="empty">
@@ -36,12 +98,17 @@ export default function Orders(){
                     {/* 주문 목록 */}
                     <div className="order__body">
                         {/* orders상태 반복 */}
-                        {orders.map(order => {
+                        {orders.map( (order, i) => {
                             const { id } = order
+
+
+
                             const prototype = products.find(p => p.id === id)
                             const click = () => {
                                 remove(id)
                             }
+
+
 
                             return(
                                 <div className="item" key={id}>
@@ -67,7 +134,7 @@ export default function Orders(){
                         <div className="item">
                             <div className="content">Total</div>
                             <div className="action">
-                                <div className="price">${totalPrice}</div>
+                                <div className="price total-price" >${totalPrice}</div>
                             </div>
                             <button className="btn btn--link btn--icon" onClick={removeAll}>
                                 <i className="icon icon--delete" />
@@ -79,5 +146,14 @@ export default function Orders(){
             </aside> 
         )
     }
+    
+
+
+    
+    
+    
+
+
+
 
 }

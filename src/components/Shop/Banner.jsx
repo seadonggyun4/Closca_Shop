@@ -48,12 +48,12 @@ export default function Header() {
     // 쿠키 저장 메서드
     const settitleCookie = () => {
       // 변수를 선언
-      var date = new Date();
-      date.setDate(date.getDate() + 1);
+      // var date = new Date();
+      // date.setDate(date.getDate());
 
       var titleCookie = "";
       titleCookie += "title=on;";
-      titleCookie += "expires=" + date.toUTCString();
+      // titleCookie += "expires=" + date.toUTCString();
 
       // 쿠키에 넣는다.
       document.cookie = titleCookie;

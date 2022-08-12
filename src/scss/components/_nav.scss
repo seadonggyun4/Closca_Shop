@@ -2,14 +2,15 @@
     position: fixed;
     top: 0;
     left: 0;
-    transform: translateX(-300px);
+    transform: translateX(-500px);
     height: 100%;
     width: 400px;
     border: 1px solid transparent;
     border-radius: 0% 0% 100% 50%;
     transition: all 1s cubic-bezier(.8, 0, .33, 1);
-    overflow: hidden;
     z-index: $nav-z;
+    overflow: hidden;
+    
 
     .nav-list{
         position: absolute;
@@ -56,5 +57,10 @@
     &.nav-open{
         transform: translateX(0px);
         border-radius: 0% 0% 0% 0%;
+        
+    }
+
+    &.little-time{
+        z-index: 10;
     }
 }
