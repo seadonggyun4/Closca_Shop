@@ -27,7 +27,7 @@ export default function Nav(){
                 <li className="nav-list-item" onClick={removeNav}><Link to={"/"}>Home</Link></li> 
                 <li className="nav-list-item" onClick={{removeNav, reload}}><Link to={"/bottle"}>Bottle</Link></li> 
                 <li className="nav-list-item" onClick={{removeNav, reload}}><Link to={"/helmet"}>Helmet</Link></li> 
-                <li className="nav-list-item" onClick={{removeNav, reload}}><a href='https://closca.com/'>RealSite</a></li> 
+                <li className="nav-list-item" onClick={removeNav}><a href='https://closca.com/' target="_blank" rel="noreferrer">RealSite</a></li> 
             </ul>
         </nav>
     )

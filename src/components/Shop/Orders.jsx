@@ -98,7 +98,7 @@ export default function Orders(){
                     {/* 주문 목록 */}
                     <div className="order__body">
                         {/* orders상태 반복 */}
-                        {orders.map( (order, i) => {
+                        {orders.map( (order) => {
                             const { id } = order
 
 

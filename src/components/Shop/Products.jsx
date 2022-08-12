@@ -106,6 +106,8 @@ export default function Products() {
 
     },[])
 
+
+    
     //HTML 랜더
     return (
       <main>
@@ -144,4 +146,6 @@ export default function Products() {
         </div>
       </main>
     );
+
+
 }
