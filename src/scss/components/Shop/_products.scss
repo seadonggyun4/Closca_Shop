@@ -107,6 +107,16 @@
         grid-template-columns: repeat(1, 1fr);
 
         .product{
+            height: 450px;
+
+            .canvas{
+                height: 60%;
+            }
+
+            .product__thumbnail{
+                padding-top: 70%;
+            }
+
             .product__body{
                 .product__title{
                     margin-top: 10px;

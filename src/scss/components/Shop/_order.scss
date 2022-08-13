@@ -1,12 +1,38 @@
-//   ============================================================ order ============================================================
-  
-aside {
+.cart{
   flex: 2;
   padding: 0.4rem;
+
+
+  .mobile-btn{
+    @include flexbox;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    height: 50px;
+    transform: translateX(-50%);
+  }
+
+  .over-lay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($color: #000000, $alpha: .6);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    z-index: $over-lay-z;
+
+    &.active{
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 }
 
-
-
+//   ============================================================ order ============================================================
 
 .order {
   position: sticky;
@@ -39,6 +65,48 @@ aside {
 
 }
 
+.order-modile.sm-only{
+  @include column-flexbox( end , center );
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: none;
+  margin-top: 100px;
+  width: 100%;
+  border: 0.05rem solid $gray;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  // transform: translateY(50%);
+  z-index: $sm-cart;
+
+  .order__body{
+    padding: 0.6rem 0.8rem;
+    padding-bottom: 0;
+    width: 100%;
+  }
+  
+  .order__total{
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  .btn.btn--secondary{
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  &.active{
+    display: flex;
+    animation-name: modal-fade-in2;
+    animation-duration: 300ms;
+  }
+
+  
+}
+
 
 //   ============================================================ empty ============================================================
 
@@ -66,6 +134,45 @@ aside {
   }
 }
 
+.empty.sm-only{
+  @include column-flexbox;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transform: translateY(50%);
+  z-index: $sm-cart;
+
+  &.active{
+    display: block;
+    animation-name: modal-fade-in;
+    animation-duration: 300ms;
+  }
+}
+
+
+@keyframes modal-fade-in {
+  0%{
+    transform: translate3d(0, 150%, 0)
+  }
+  100%{
+    transform: translate3d(0, 50%, 0);
+  }
+}
+
+@keyframes modal-fade-in2 {
+  0%{
+    transform: translate3d(0, 100%, 0)
+  }
+  100%{
+    transform: translate3d(0, 0%, 0);
+  }
+}
 
 @media (max-width: 500px) {
   .order{

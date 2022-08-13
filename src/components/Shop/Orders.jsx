@@ -73,28 +73,54 @@ export default function Orders(){
     //     }
     // })
 
+    const activeCart = () => {
+        const overlay = document.querySelector('.over-lay')
+        const emty = document.querySelector('.empty.sm-only')
+        const order = document.querySelector('.order-modile.sm-only')
 
+        overlay.classList.add('active')
+        if(emty){
+            emty.classList.add('active')
+        } else {
+            order.classList.add('active')
+        }
+    }
 
+    const disableCart = (e) => {
+        const emty = document.querySelector('.empty.sm-only')
+        const order = document.querySelector('.order-modile.sm-only')
 
-    
+        e.currentTarget.classList.remove('active')
+        if(emty){
+            emty.classList.remove('active')
+        } else {
+            order.classList.remove('active')
+        }
+    }
     
 
 
     // 주문목록상태 가 없을때
     if(orders.length <= 0){
         return(
-           <aside>
-                <div className="empty">
+           <aside className="cart">
+                <div className="empty sm-hidden">
                     <div className="empty__title">You don't have any orders</div>
                     <div className="empty__subtitle">Click on a + to add an orders</div>
                 </div>
+                <div className="empty sm-only">
+                    <div className="empty__title">You don't have any orders</div>
+                    <div className="empty__subtitle">Click on a + to add an orders</div>
+                </div>
+                <div className="mobile-btn btn btn--secondary sm-only" onClick={activeCart}>Show Cart</div>
+                <div className="over-lay sm-only" aria-hidden="true" onClick={disableCart} ></div>
            </aside>
         )
     } else { 
         // 주문목록 상태 가 있을때
         return(
-            <aside>
-                <div className="order">
+            <aside className="cart">
+                <div className="order sm-hidden">
                     {/* 주문 목록 */}
                     <div className="order__body">
                         {/* orders상태 반복 */}
@@ -143,6 +169,57 @@ export default function Orders(){
                     </div>
                     <button className="btn btn--secondary" style={{margin: 10, height: 50}}>Check Out</button>
                 </div>
+                <div className="order-modile sm-only">
+                    {/* 주문 목록 */}
+                    <div className="order__body">
+                        {/* orders상태 반복 */}
+                        {orders.map( (order) => {
+                            const { id } = order
+
+
+
+                            const prototype = products.find(p => p.id === id)
+                            const click = () => {
+                                remove(id)
+                            }
+
+
+
+                            return(
+                                <div className="item" key={id}>
+                                    <div className="img">
+                                        <img src={prototype.thumbnail} alt="상품 이미지!!"/>
+                                    </div>
+                                    <div className="content">
+                                        <p className="title">{order.quantity} X {prototype.title}</p>
+                                    </div>
+                                    <div className="action">
+                                        <p className="price">${prototype.price * order.quantity}</p>
+                                        <button className="btn btn--link btn--icon" onClick={click}>
+                                            <i className="icon icon--cross" />
+                                        </button>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    {/* 주문 합계 */}
+                    <div className="order__total">
+                        <hr/>
+                        <div className="item">
+                            <div className="content">Total</div>
+                            <div className="action">
+                                <div className="price total-price" >${totalPrice}</div>
+                            </div>
+                            <button className="btn btn--link btn--icon" onClick={removeAll}>
+                                <i className="icon icon--delete" />
+                            </button>
+                        </div>
+                    </div>
+                    <button className="btn btn--secondary" style={{margin: 10, height: 50}}>Check Out</button>
+                </div>
+                <div className="mobile-btn btn btn--secondary sm-only" onClick={activeCart}>Show Cart</div>
+                <div className="over-lay sm-only" aria-hidden="true"  onClick={disableCart}></div>
             </aside> 
         )
     }

@@ -16,6 +16,7 @@
     perspective: 500px;
     text-align: center;
     overflow: hidden;
+    z-index: $banner-z;
 
     .banner__title{
         position: absolute;
