@@ -1,0 +1,218 @@
+.loding{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 5000px;
+    background: linear-gradient(rgba(10, 20, 40, 1) 50%, transparent 100%);
+    transition: all 8s ease-in-out;
+    z-index: 1000;
+
+    .loding__title--effect {
+        position: absolute;
+        top: 500px;
+        left: 50%;
+        transform-style: preserve-3d;
+        will-change: transform;
+
+
+        .text {
+            position: absolute;
+            font-size: 10rem;
+            color: #fff;
+            line-height: 10rem;
+            font-family: 'Anton', sans-serif;
+            padding: 20px 0;
+            mix-blend-mode: screen;
+            transform-style: preserve-3d;
+            will-change: transform;
+            @for $i from 1 through 26 {
+            $key: $i - 1;
+            $param: 5;
+                &:nth-child(#{$i}) {
+                    clip-path: polygon(
+                    -30% + ($key * $param) 0,
+                    -20% + ($key * $param) 0,
+                    20% + ($key * $param) 100%,
+                    0% + ($key * $param) 100%
+                    );
+                    animation: wave 2000ms $key * 200 - 10000ms ease-in-out infinite alternate;
+                }
+            }
+        }
+
+
+        @keyframes wave {
+            0% {
+                transform: translate(-50%, -50%) scale(0.9) rotateX(20deg) rotateY(20deg);
+                color: rgba(0, 30, 100, 1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.1) rotateX(0deg) rotateY(0deg);
+                color: rgb(53,134,255);
+            }
+        }
+    }
+
+
+    .loading__wavebox{
+        position: absolute;
+        top: 1000px;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-50%);
+        background: linear-gradient(rgb(53,134,255) 50%, transparent 100%);
+        transition: all 10s ease-in-out;
+        
+        .waves{
+            .wave{
+                position: absolute;
+                top: -100px;
+                left: 0;
+                width: 100%;
+                height: 100px;
+                background: url(../../assets/wave.png);
+                background-size: 1000px 100px;
+            
+                &.wave1{
+                z-index: $wave1-z;
+                opacity: 1;
+                bottom: 0;
+                animation: animateWave 4s linear infinite;
+                }
+            
+                &.wave2{
+                z-index: $wave2-z;
+                opacity: 0.5;
+                bottom: 10px;
+                animation: animateWave_02 4s linear infinite;
+                }
+            
+                &.wave3{
+                z-index: $wave1-z;
+                opacity: 0.2;
+                bottom: 15px;
+                animation: animateWave 3s linear infinite;
+                }
+            
+                &.wave4{
+                z-index: $wave2-z;
+                opacity: 0.7;
+                bottom: 20px;
+                animation: animateWave_02 3s linear infinite;
+                }
+            
+                /* 왼쪽 -> 오른쪽 으로 흐른다 */
+                @keyframes animateWave
+                {
+                0%{
+                    background-position-x: 1000px;
+                }
+                100%{
+                    background-position-x: 0px;
+                }
+                }
+            
+                /* 오른쪽 -> 왼쪽 으로 흐른다 */
+                @keyframes animateWave_02
+                {
+                0%{
+                    background-position-x: 0px;
+                }
+                100%{
+                    background-position-x: 1000px;
+                }
+                }
+            
+            }
+        }
+
+        &.active{
+            transform: translate3d(-50%, -100%, 0);
+        }
+    }
+
+    .loading__area{
+        position: absolute;
+        top: 700px;
+        left: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translate(-50%, -50%);
+        transition: all 1s ease-in-out;
+            
+        .loading__bar {
+            background-color: rgb(53,134,255);
+            animation: loading 10s linear 1;
+            // animation-delay: 10s;
+            border-radius: 10px;
+
+
+            @keyframes loading {
+                0% {
+                width: 0;
+                }
+                100% {
+                width: 100%;
+                }
+            }
+        }
+        
+        
+        .loading__bg {
+            color: rgb(53,134,255);
+            width: 250px;
+            height: 10px;
+            border: 1px solid rgb(53,134,255);
+            border-radius: 10px;
+        }     
+    }
+
+    &.active{
+        transform: translate3d(0, -200%, 0);
+    }
+
+    @media (max-width: 1000px) {
+    
+        .loding__title--effect{
+            .text{
+                font-size: 8rem;
+            }
+        }
+    
+        .loading__area{
+            .loading__bg{
+                width: 150px;
+            }
+        }
+    
+    }
+    
+    @media (max-width: 500px) {
+    
+        .loding__title--effect{
+            .text{
+                font-size: 4rem;
+            }
+        }
+
+        .loading__wavebox{
+            top: 850px;
+        }
+    
+        .loading__area{
+            top: 600px;
+
+            .loading__bg{
+                width: 100px;
+            }
+        }
+    
+    }
+}
+

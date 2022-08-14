@@ -7,6 +7,7 @@ import Nav from './components/Nav';
 import Home from './pages/Home';
 import Bottle from './pages/Bottle'
 import { useEffect } from 'react';
+import Loding from './components/Loding';
 
 
 
@@ -40,6 +41,7 @@ function App() {
   return (
     <AppStateProvider>
       <BrowserRouter>
+        <Loding />
         <Header />
         <Routes>
             <Route path='/' element={ <Home /> }/>
